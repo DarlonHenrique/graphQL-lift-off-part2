@@ -2,7 +2,7 @@ const { ApolloServer } = require('@apollo/server')
 const { startStandaloneServer } = require('@apollo/server/standalone')
 
 const typeDefs = require('./schema')
-const resovers = require('./resolvers');
+const resolvers = require('./resolvers');
 const TrackAPI = require('./datasources/track-api');
 
 async function startApolloServer() {
@@ -15,7 +15,7 @@ async function startApolloServer() {
       const { cache } = server
       return {
         dataSources: {
-          trackAPI: new TrackAPI(cache)
+          trackAPI: new TrackAPI({cache})
         }
       }
     }
